@@ -1,12 +1,16 @@
 import React from 'react';
-
+import Header from './Components/Header'
+import MainWindow from './Components/MainWindow'
+import DataManager from './Components/DataManager'
 function App() {
+
+  DataManager.initDataManager();
+
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-      StampCollector
-    </div>
+      <div className="App container-fluid">
+        <Header/>
+        <MainWindow data={DataManager.stampCollection}/>
+      </div>
   );
 }
 
