@@ -7,7 +7,7 @@ function App() {
   DataManager.initDataManager();
 
   return (
-      <div className="App container-fluid">
+      <div className="App">
         <Header/>
         <MainWindow stampCollection={DataManager.stampCollection}/>
       </div>
