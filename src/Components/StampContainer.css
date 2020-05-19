@@ -1,0 +1,53 @@
+.StampContainerImage{
+    background-color: chocolate;
+    padding: 3px;
+}
+
+.StampContainerHeader{
+   /* // background-color:darkgray;
+   */
+
+    
+}
+.StampContainerImage img{
+    max-height:60%;
+    max-width: 60%;
+    min-height: 100px;
+    min-width: 100px;
+}
+
+.StampContainer{
+    margin: 2px;
+    border: black;
+    border-width: 1px;
+    border-style:solid;
+    border-radius: 25px 25px 25px 25px;
+}
+
+.StampContainerData{
+    background-color: var(--main-bg-color);
+    text-align: left;
+    height: 100%;
+
+}
+
+.StampDataRowHeader{
+    background-color: blanchedalmond;
+    text-align: left;
+    font-size: xx-small;
+    padding: 2px;
+    margin: 0px 2px 0px ;
+    
+}
+
+.StampDataRow{
+    background-color: coral;
+    text-align: left;
+    padding: 2px;
+    margin: 0px 2px 4px 2px;
+    border-style: solid;
+    border-width: 2px 0px 2px 0px;
+    border-color: black;
+    
+}
+
