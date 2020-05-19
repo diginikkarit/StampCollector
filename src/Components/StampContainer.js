@@ -21,17 +21,17 @@ export default class StampContainer extends Component {
     
     render() {
         return (
-            <div className="col-6 StampContainer  justify-content-center">
+            <div className="col StampContainer justify-content-center" onClick={this.headerClicked}>
                 <div className="row">
-                    <div className="col StampContainerHeader" onClick={this.headerClicked}>
+                    <div className="col StampContainerHeader">
                         {this.props.stamp.name}
                     </div>
                 </div>
                <div className="row" hidden={!this.state.showFull}>
-                    <div className="col-6">
+                    <div className="col-4">
                     <StampImage imagePath={this.props.stamp.imageUrl} />
                     </div>
-                    <div className="col-6">
+                    <div className="col-8">
                     <StampData stampData = {this.props.stamp}/>
                     </div>
                 </div>

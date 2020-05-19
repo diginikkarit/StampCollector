@@ -7,7 +7,7 @@ function App() {
   DataManager.initDataManager();
 
   return (
-      <div className="App">
+      <div className="App container col-10 justify-content-center">
         <Header/>
         <MainWindow stampCollection={DataManager.stampCollection}/>
       </div>

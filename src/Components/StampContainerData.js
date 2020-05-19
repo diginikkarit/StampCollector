@@ -15,7 +15,7 @@ export default class StampContainerData extends Component {
                 <div className="StampDataRow">{stamp.name}</div>
 
                 <div className="StampDataRowHeader">Price</div>
-                <div className="StampDataRow">{stamp.GetPriceString()}</div>
+                <div className="StampDataRow">{stamp.GetPriceString()} €</div>
 
                 <div className="StampDataRowHeader">Country</div>
                 <div className="StampDataRow">{stamp.country}</div>

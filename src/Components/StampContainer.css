@@ -3,6 +3,7 @@
     font-size: larger;
     margin: 2px;
     text-align: left;
+    color:whitesmoke;
 }
 
 .StampContainerImage{
@@ -26,12 +27,15 @@
     border-style:solid;
     border-radius: 25px ;
     padding-bottom: 5px;
+    background-image: linear-gradient(rgb(158, 158, 158), rgb(85, 85, 85));
+
 }
 
 .StampContainerData{
-    background-color: var(--main-bg-color);
+   
     text-align: left;
     height: 100%;
+
     
 
 }

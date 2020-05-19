@@ -3,7 +3,7 @@ import {Stamp} from './Stamp'
 
 var stampCollection = [];
 
-function initDataManager(){
+var initDataManager = () => {
     var stamp1 = new Stamp(
         "testiStamp 1",
         1892,

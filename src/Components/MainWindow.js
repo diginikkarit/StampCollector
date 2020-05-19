@@ -4,7 +4,7 @@ import StampContainer from './StampContainer'
 export default class MainWindow extends Component {
     render() {
         return (
-            <div className="col-9 MainWindow">
+            <div className="col MainWindow">
                 <p>this is the main window.</p>
                 <StampContainer stamp={this.props.stampCollection[0]}/>
                 <StampContainer stamp={this.props.stampCollection[1]}/>
