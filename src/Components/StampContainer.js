@@ -24,7 +24,6 @@ export default class StampContainer extends Component {
             <div className="col-6 StampContainer  justify-content-center">
                 <div className="row">
                     <div className="col StampContainerHeader" onClick={this.headerClicked}>
-                        {this.state.showFull}
                         {this.props.stamp.name}
                     </div>
                 </div>
