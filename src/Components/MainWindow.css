@@ -6,6 +6,7 @@
     background-color: brown;
     text-align: center;
     padding: 20px;
+    
 }
 
 .MainWindow{
@@ -16,6 +17,25 @@
 
 .StampContainer{
     background-color: grey;
+
+}
+
+.RouterLink{
+    background-color: grey;
+    color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: x-large;
+
+}
+
+.RouterLink:hover{
+    color: rgb(202, 202, 202);
+    background-color: rgb(168, 168, 168);
+    text-shadow: 2px 2px 2px black;
+    text-decoration: none;
 
 }
 
