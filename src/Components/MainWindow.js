@@ -8,11 +8,33 @@ import AddStampContainer from './AddStampContainer'
 
 export default class MainWindow extends Component {
 
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             dataManager:this.props.dataManager,
+             stampCollection:this.props.dataManager.stampCollection
+        }
+    }
+
+    AddStampToCollection = (stamp) =>{
+           stamp.StampToConsole();
+           this.state.dataManager.addStampToCollection(stamp)
+          this.UpdateCollection()
+    }
+    
+    UpdateCollection = () => {
+        console.log("Updatet collection")
+        this.setState({
+            stampCollection:this.state.dataManager.stampCollection
+        })
+    }
+
     render() {
 
-        var list = () => <StampListContainer stampCollection={this.props.dataManager.stampCollection}/>
+        var list = () => <StampListContainer stampCollection={this.state.stampCollection}/>
         var about = () => <AboutContainer />
-        var addStamp = () => <AddStampContainer addStampToCollection={this.props.dataManager.addStampToCollection} />
+        var addStamp = () => <AddStampContainer addStampToCollection={this.AddStampToCollection} />
         var summary = () => <SummaryContainer />
         return (
             <div className="col MainWindow">

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Stamp} from './Stamp'
 
 export default class EditStampForm extends Component {
     
@@ -15,8 +16,7 @@ export default class EditStampForm extends Component {
                 stampName:(stamp != null) ? stamp.name : "",
                 stampPrice:(stamp != null) ? stamp.price : "",
                 stampYearPublished:(stamp != null) ? stamp.yearPublished:"",
-                 stampCountry:(stamp != null) ? stamp.country:"",
-                 stampIsStamped:(stamp != null) ? stamp.isStamped:""
+                stampCountry:(stamp != null) ? stamp.country:"",
         }
     }
 
@@ -51,10 +51,18 @@ export default class EditStampForm extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log("Submited")
-    
-        this.props.addStampToCollection("jee")
         event.preventDefault();
+        console.log("Submited")
+        let name = this.state.stampName
+        let price = this.state.stampPrice
+        let yearPublished = this.state.stampYearPublished
+        let country = this.state.stampCountry
+        let isStamped = this.state.stampIsStamped
+
+        let stamp = new Stamp(name,yearPublished,isStamped,null,country,price)
+
+        this.props.addStampToCollection(stamp)
+        
     }
     
     render() {
@@ -96,8 +104,6 @@ export default class EditStampForm extends Component {
                             <input type="text" value={this.state.stampYearPublished} onChange={this.yearPublishedChanged}></input>
                         </div> 
                     </div>
-
-                    
                     <div className='row'>
                         <div className='col'>
                             stamped:        

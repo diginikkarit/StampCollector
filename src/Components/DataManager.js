@@ -30,7 +30,12 @@ var initDataManager = () => {
 }
 
 var addStampToCollection = (stamp) =>{
-    console.log("Adding stamp to collection")
+    console.log("Trying to add stamp to the collection")
+    if(stamp.StampToConsole != null) {
+        stamp.StampToConsole();
+    }
+    stampCollection.push(stamp)
+
 } 
 
 export default {stampCollection,initDataManager,addStampToCollection}
