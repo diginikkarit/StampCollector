@@ -9,7 +9,7 @@ function App() {
   return (
       <div className="App container col-10 justify-content-center">
         <Header/>
-        <MainWindow stampCollection={DataManager.stampCollection}/>
+        <MainWindow dataManager={DataManager}/>
       </div>
   );
 }

@@ -7,7 +7,7 @@ var initDataManager = () => {
     var stamp1 = new Stamp(
         "testiStamp 1",
         1892,
-        true,
+        false,
         'https://upload.wikimedia.org/wikipedia/commons/1/1c/War_Savings_Stamp_WWII.png',
         "U.S.A.",
         13.40
@@ -29,4 +29,8 @@ var initDataManager = () => {
     stampCollection.push(stamp1,stamp2,stamp3);
 }
 
-export default {stampCollection,initDataManager}
+var addStampToCollection = (stamp) =>{
+    console.log("Adding stamp to collection")
+} 
+
+export default {stampCollection,initDataManager,addStampToCollection}
