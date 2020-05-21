@@ -4,6 +4,9 @@ import {Stamp} from './Stamp'
 var stampCollection = [];
 
 var initDataManager = () => {
+
+    console.log("Data Manager initialised..!")
+
     var stamp1 = new Stamp(
         "testiStamp 1",
         1892,
