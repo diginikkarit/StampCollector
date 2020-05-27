@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './StampContainer.css'
 import StampData from './StampContainerData'
 import StampImage from './StampContainerImage'
+import {NavLink} from 'react-router-dom'
 
 export default class StampContainer extends Component {
     
@@ -18,13 +19,19 @@ export default class StampContainer extends Component {
             {showFull:!this.state.showFull}
         )
     }
-    
+
     render() {
         return (
-            <div className="col StampContainer justify-content-center" onClick={this.headerClicked}>
-                <div className="row">
-                    <div className="col StampContainerHeader">
+            <div className="col StampContainer" onClick={this.headerClicked}>
+                <div className="row StampContainerHeader">
+                    <div className='HeaderCol col-1'  hidden={this.state.showFull}>
+                        <img src={this.props.stamp.imageUrl} alt="StampPic"/>
+                    </div>
+                    <div className="HeaderCol" >
                         {this.props.stamp.name}
+                    </div>
+                    <div className="HeaderCol col text-right" hidden={this.state.showFull}>
+                        {this.props.stamp.GetPriceString()} €
                     </div>
                 </div>
                <div className="row" hidden={!this.state.showFull}>
@@ -33,9 +40,10 @@ export default class StampContainer extends Component {
                     </div>
                     <div className="col-8">
                     <StampData stampData = {this.props.stamp}/>
+                    <NavLink to={{ pathname:"/addStamp", stamp:this.props.stamp}}><button className="btn btn-primary">Edit Stamp</button></NavLink>        
+
                     </div>
                 </div>
-                                 
             </div>
         )
     }

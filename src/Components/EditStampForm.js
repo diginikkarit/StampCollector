@@ -5,22 +5,39 @@ import './EditStampForm.css'
 
 export default class EditStampForm extends Component {
     
+ 
+
     constructor(props) {
         super(props)
         
-        let stamp = this.props.stamp
-
-       
+        //let stamp = this.props.stamp
         
+        this.test = this.props.addStampToCollection
         //To use this as an update form and for adding, it is needed to check is there is a 
         //stamp provided for editing.
+        console.log("Loaded page")
             this.state = {
-                stampName:(stamp != null) ? stamp.name : "",
-                stampPrice:(stamp != null) ? stamp.price : "",
-                stampYearPublished:(stamp != null) ? stamp.yearPublished:"",
-                stampCountry:(stamp != null) ? stamp.country:"",
-                stampImageUrl:(stamp != null) ? stamp.imageUrl:""
+                stamp:this.props.stamp,
+                stampId:(this.props.stamp != null) ? this.props.stamp.id : "",
+                stampName:(this.props.stamp != null) ? this.props.stamp.name : "",
+                stampPrice:(this.props.stamp != null) ? this.props.stamp.price : "",
+                stampYearPublished:(this.props.stamp != null) ? this.props.stamp.yearPublished:"",
+                stampCountry:(this.props.stamp != null) ? this.props.stamp.country:"",
+                stampImageUrl:(this.props.stamp != null) ? this.props.stamp.imageUrl:""
+                
         }
+    }
+
+    test(){
+
+    }
+
+    SetStampToState(stamp){
+        
+        this.setState ({
+            stampName:stamp.name,
+            stampPrice:22 ,
+        })
     }
 
     componentDidMount(){
@@ -56,27 +73,74 @@ export default class EditStampForm extends Component {
             stampIsStamped:event.target.value
         })
     }
-
     
     imageUrlChanged = (event) =>{
+       
         this.setState({
             stampImageUrl:event.target.value
         })
     }
-
+    
     handleSubmit = (event) => {
         event.preventDefault();
+        event.stopPropagation();
+        this.CheckImage(this.state.stampImageUrl,this.HandleStampAdding)
+    }
+    
+    CheckImage = (imageUrl,imageOKFunction) =>{
+        var img = new Image();
+        img.src =imageUrl;
+        img.onload = () =>  {imageOKFunction()}
+        img.onerror=() => alert("Image was not valid!")
+    }
+
+    HandleStampAdding = () =>{
+
+        let id = this.state.stampId;
+        if(id === ""){
+            id=null
+        }
+
         console.log("Submited")
         let name = this.state.stampName
-        let price = this.state.stampPrice
+        if(name === ""){
+            name="Stamp has no name"
+        } 
+        let price = parseFloat(this.state.stampPrice)
+        if(isNaN(price) === true){
+            console.log("in NaN")
+            price = parseFloat(0.0)
+        }
+        this.setState(  {
+            stampPrice:price
+        })
+        
         let yearPublished = this.state.stampYearPublished
         let country = this.state.stampCountry
+        if(this.state.stampCountry === ""){
+            alert("You have to give coutry!")
+            return;
+        }
         let isStamped = this.state.stampIsStamped
-
-        let stamp = new Stamp(name,yearPublished,isStamped,null,country,price)
-
-        this.props.addStampToCollection(stamp)
+        if(isStamped === undefined){
+            isStamped = true;
+        } 
+        let imgUrl = this.state.stampImageUrl
+        let stamp = new Stamp(id,name,yearPublished,isStamped,imgUrl,country,price)
         
+
+        //this.state.addStampToCollection(stamp)
+        this.test(stamp)
+        console.log(this.props.stamp)
+    }
+
+    ImageContainer = () => {
+        if(this.state.stampImageUrl === ""){
+            return <p>no picture provided</p>
+        }
+        else{
+           return <StampContainerImage imagePath={this.state.stampImageUrl}/>
+        }
     }
     
     render() {
@@ -86,8 +150,7 @@ export default class EditStampForm extends Component {
                 <div className='row ImageRow justify-content-center'>
                     
                     <div className='col-4 center'>
-                        <StampContainerImage imagePath={this.state.stampImageUrl}/>
-
+                        {this.ImageContainer()}
                     </div>
                 </div>
 

@@ -10,7 +10,7 @@ export default class MainWindow extends Component {
 
     constructor(props) {
         super(props)
-    
+        
         this.state = {
              dataManager:this.props.dataManager,
              stampCollection:this.props.dataManager.stampCollection
@@ -24,17 +24,18 @@ export default class MainWindow extends Component {
     }
     
     UpdateCollection = () => {
-        console.log("Updatet collection")
+        console.log("Updated collection")
         this.setState({
             stampCollection:this.state.dataManager.stampCollection
         })
     }
 
     render() {
-
-        var list = () => <StampListContainer stampCollection={this.state.stampCollection}/>
+        var list = () => <StampListContainer stampCollection={this.state.stampCollection} />
         var about = () => <AboutContainer />
-        var addStamp = () => <AddStampContainer addStampToCollection={this.AddStampToCollection} />
+        var addStamp = (props) => {
+        return <AddStampContainer stamp={props.location.stamp} addStampToCollection={this.AddStampToCollection} />
+        }
         var summary = () => <SummaryContainer />
         return (
             <div className="col MainWindow">
@@ -56,7 +57,6 @@ export default class MainWindow extends Component {
                     </div>
                 </div>
                 </Router>
-               
             </div>
         )
     }
