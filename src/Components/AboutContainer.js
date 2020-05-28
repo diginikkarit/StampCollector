@@ -5,6 +5,7 @@ export default class AboutContainer extends Component {
         return (
             <div>
                 <p>This is an about page. Nothing special here yet.</p>
+                <p>Editing stuff.</p>
             </div>
         )
     }
